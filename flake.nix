@@ -37,7 +37,7 @@
       name = "FSharpDevShell";
       buildInputs = with pkgs; [
         bashInteractive
-        dotnet-sdk_9
+        dotnet-sdk_10
         vscode-fhs
       ];
 
