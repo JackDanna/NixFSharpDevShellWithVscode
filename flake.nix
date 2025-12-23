@@ -18,6 +18,7 @@
           "vscode"
           "vscode-extension-mhutchie-git-graph"
         ];
+        allowUnfree = true;
       };
     };
     
@@ -37,24 +38,7 @@
       buildInputs = with pkgs; [
         bashInteractive
         dotnet-sdk_9
-        (vscode-with-extensions.override  {
-          vscode = pkgs.vscode;
-          vscodeExtensions = with pkgs.vscode-extensions; [
-            ionide.ionide-fsharp
-            oldPkgs.vscode-extensions.ms-dotnettools.csharp # We need to make sure we use version 2.39.32 since there is a bug otherise: https://github.com/ionide/ionide-vscode-fsharp/issues/2039
-            ms-dotnettools.vscode-dotnet-runtime
-
-            jnoortheen.nix-ide
-            mhutchie.git-graph
-          ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-            # {
-            #   name = "vscode-dotnet-pack";
-            #   publisher = "ms-dotnettools";
-            #   version = "1.0.13";
-            #   sha256 = "sha256-z3xiXgWADSHdZM/+MSmqRXqDjiX4O6whevN1zSmByWQ=";
-            # }
-          ];
-        })
+        vscode-fhs
       ];
 
       shellHook = ''
